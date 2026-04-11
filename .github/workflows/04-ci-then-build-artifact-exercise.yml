@@ -1,4 +1,4 @@
-name: 03 Build Artifact Workflow
+name: 03 Build Artifact Workflow-needs version
 
 on:
   workflow_dispatch:
