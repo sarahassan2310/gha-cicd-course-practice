@@ -1,0 +1,17 @@
+name: Run on Merged PR
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+  workflow_dispatch:
+
+jobs:
+  run-only-if-merged:
+    if: ${{ github.event.pull_request.merged == true }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say Hello
+        run: echo "PR was merged successfully!"
