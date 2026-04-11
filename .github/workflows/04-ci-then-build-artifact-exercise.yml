@@ -1,4 +1,4 @@
-name: 03 Build Artifact Workflow -need version 
+name: 03 Build Artifact Workflow
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ env:
 
 jobs:
   # -------------------------
-  # JOB 1: Test
+  # JOB 1: TESTS ONLY
   # -------------------------
   test:
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
   # -------------------------
-  # JOB 2: Build (Matrix + depends on test)
+  # JOB 2: BUILD (depends on test + matrix)
   # -------------------------
   build-package:
     needs: test
@@ -46,9 +46,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Run tests (safety check per version)
-        run: python -m unittest discover -s tests -v
 
       - name: Set image tag
         id: image-tag
