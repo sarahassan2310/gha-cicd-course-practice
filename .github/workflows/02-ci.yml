@@ -26,6 +26,8 @@ jobs:
         run: |
           echo "Files in repo:"
           ls -R
+      - name: Show current date
+        run: date
 
       - name: Set up Python
         # Prepare Python on the runner. This does not change the student laptop.
