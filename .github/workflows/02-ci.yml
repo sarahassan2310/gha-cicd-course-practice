@@ -22,11 +22,19 @@ jobs:
         # Download the repository contents onto the runner.
         uses: actions/checkout@v6
 
+      - name: List files in runner
+        run: |
+          echo "Files in repo:"
+          ls -R
+
       - name: Set up Python
         # Prepare Python on the runner. This does not change the student laptop.
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      - name: Verify Python version
+        run: python --version
 
       - name: Run tests
         # This is the key verification step in the CI workflow.
